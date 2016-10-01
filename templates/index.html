@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>We connect people</title>
+</head>
+<body>
+    <form action="/register/" method="post">
+        {% csrf_token %}
+        <input type="text" name="phone" placeholder="enter your phone number"/>
+        <input type="password" name="password" placeholder="enter password"/>
+        <input type="submit" value="send"/>
+    </form>
+</body>
+</html>

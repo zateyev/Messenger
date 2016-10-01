@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm your phone number</title>
+</head>
+<body>
+    <form action="/confirm/" method="post">
+        {% csrf_token %}
+        <input type="text" name="code" value=""/>
+        <input type="submit" value="confirm"/>
+    </form>
+</body>
+</html>
