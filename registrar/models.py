@@ -9,14 +9,18 @@ class Registrar(models.Model):
 
     def generate_code(self):
         self.code = randint(1, 9999)
-        print("Your code is: " + str(self.code))
+        self.send_code()
         return self.code
 
     @staticmethod
     def register(username, password):
-        user = User.objects.create_user(username)
-        user.password = password
-        user.save()
+        if not User.objects.filter(username=username).exists():
+            user = User.objects.create_user(username)
+            user.password = password
+            user.save()
+            return True
+        else:
+            return False
 
     def send_code(self):
-        pass
+        print("Your code is: " + str(self.code))

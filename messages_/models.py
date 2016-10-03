@@ -16,7 +16,6 @@ class Message(models.Model):
     )
     state = models.IntegerField(choices=STATE_CHOICES)
     sender = models.OneToOneField(User)
-    # receiver = models.OneToOneField(User)
     timeStamp = models.DateTimeField()
 
     def __str__(self):

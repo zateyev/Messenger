@@ -1,9 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 
 from registrar.models import Registrar
-from .models import *
 
 
 @csrf_exempt
@@ -30,7 +30,10 @@ def register(request):
 def confirm(request):
     form = request.session.get('form')
     if str(request.session.get('code')) == str(request.POST.get('code')):
-        Registrar.register(form['phone'], form['password'])
-        return HttpResponse("Thank you, your account has been created!")
-    return HttpResponse("Oops, something went wrong!")
+        if Registrar.register(form['phone'], form['password']):
+            return HttpResponse("Thank you, your account has been created!")
+        else:
+            return HttpResponse("User with phone %s is already in use" % form['phone'])
+    else:
+        return HttpResponse(loader.get_template('confirm.html').render(request))
 
