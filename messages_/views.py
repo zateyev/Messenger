@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
@@ -37,3 +36,7 @@ def confirm(request):
     else:
         return HttpResponse(loader.get_template('confirm.html').render(request))
 
+
+def profile(request):
+    template = loader.get_template('accounts/profile.html')
+    return HttpResponse(template.render({'request': request}, request))

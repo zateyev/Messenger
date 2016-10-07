@@ -1,7 +1,7 @@
-from django import forms
-from django.db import models
-from django.contrib.auth.models import User
 from random import randint
+
+from django.contrib.auth.models import User
+from django.db import models
 
 
 class Registrar(models.Model):
@@ -16,7 +16,7 @@ class Registrar(models.Model):
     def register(username, password):
         if not User.objects.filter(username=username).exists():
             user = User.objects.create_user(username)
-            user.password = password
+            user.set_password(password)
             user.save()
             return True
         else:
