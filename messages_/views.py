@@ -8,19 +8,15 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from registrar.models import Registrar
 
 
-@csrf_exempt
 def index(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render(request))
 
 
-@csrf_exempt
 def signup(request):
-    template = loader.get_template('signup.html')
-    return HttpResponse(template.render(request))
+    return render(request, 'signup.html', {})
 
 
-@csrf_exempt
 def register(request):
     template = loader.get_template('confirm.html')
     registrar = Registrar()
@@ -32,7 +28,7 @@ def register(request):
         form['password'] = request.POST.get('password')
     request.session['form'] = form
     return HttpResponse(template.render(request))
-    # return render(request, 'confirm.html', {})
+
     # return render_to_response('confirm.html', RequestContext(request, {}))
 
 
