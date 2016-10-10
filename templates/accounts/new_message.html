@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New message</title>
+</head>
+
+<body>
+
+<form action="/accounts/write_message/" method="post">
+    {% csrf_token %}
+    <p><b>Номер получателя:</b><br>
+        <input type="text" name="receiver" size="40">
+
+    <p>Сообщение<Br>
+        <textarea name="text" cols="40" rows="3"></textarea></p>
+    <p><input type="submit" value="Отправить">
+        <input type="reset" value="Очистить"></p>
+</form>
+
+</body>
+</html>
