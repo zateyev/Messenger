@@ -1,25 +1,26 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.template import loader
+from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from registrar.models import Registrar
 
 
-@csrf_protect
+@csrf_exempt
 def index(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render(request))
 
 
-@csrf_protect
+@csrf_exempt
 def signup(request):
     template = loader.get_template('signup.html')
     return HttpResponse(template.render(request))
 
 
-@csrf_protect
+@csrf_exempt
 def register(request):
     template = loader.get_template('confirm.html')
     registrar = Registrar()
@@ -32,9 +33,10 @@ def register(request):
     request.session['form'] = form
     return HttpResponse(template.render(request))
     # return render(request, 'confirm.html', {})
+    # return render_to_response('confirm.html', RequestContext(request, {}))
 
 
-@csrf_protect
+@csrf_exempt
 def confirm(request):
     form = request.session.get('form')
     if str(request.session.get('code')) == str(request.POST.get('code')):
@@ -44,6 +46,7 @@ def confirm(request):
             return HttpResponse("User with phone %s is already in use" % form['phone'])
     else:
         return HttpResponse(loader.get_template('confirm.html').render(request))
+        # return render(request, 'confirm.html', RequestContext(request, locals()))
 
 
 def profile(request):
