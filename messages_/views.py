@@ -1,17 +1,25 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import RequestContext
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from registrar.models import Registrar
 
 
-@csrf_exempt
+@csrf_protect
 def index(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('base.html')
     return HttpResponse(template.render(request))
 
 
-@csrf_exempt
+@csrf_protect
+def signup(request):
+    template = loader.get_template('signup.html')
+    return HttpResponse(template.render(request))
+
+
+@csrf_protect
 def register(request):
     template = loader.get_template('confirm.html')
     registrar = Registrar()
@@ -23,9 +31,10 @@ def register(request):
         form['password'] = request.POST.get('password')
     request.session['form'] = form
     return HttpResponse(template.render(request))
+    # return render(request, 'confirm.html', {})
 
 
-@csrf_exempt
+@csrf_protect
 def confirm(request):
     form = request.session.get('form')
     if str(request.session.get('code')) == str(request.POST.get('code')):

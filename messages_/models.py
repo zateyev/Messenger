@@ -15,8 +15,9 @@ class Message(models.Model):
         (STATE_FAVORITE, 'New')
     )
     state = models.IntegerField(choices=STATE_CHOICES)
-    sender = models.OneToOneField(User)
-    timeStamp = models.DateTimeField()
+    sender = models.OneToOneField(User, related_name='sender')
+    receiver = models.OneToOneField(User, related_name='receiver')
+    timestamp = models.DateTimeField()
 
     def __str__(self):
         return self.text
