@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
-    <p>Your phone number is {{ request.user.username }}</p>
-    <a href="/accounts/new_message/"><button>Написать сообщение</button></a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block navigator %}
+    <li class="active"><a href="/accounts/profile/">{{ request.user.username }}</a></li>
+    <li><a href="/write_message/">Написать сообщение</a></li>
+    <li><a href="#">Log out</a></li>
+{% endblock %}
+{% block content %}

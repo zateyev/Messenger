@@ -1,6 +1,4 @@
 .idea/
-
-messages_/migrations/0001_initial.py
-messenger/__pycache__/
-registrar/__pycache__/
-registrar/migrations/
+*.sqlite3
+*.pyc
+*.pyo

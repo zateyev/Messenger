@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Confirm your phone number</title>
-</head>
-<body>
-    <form action="/confirm/" method="post">
+{% extends 'base.html' %}
+{% block content %}
+    <form action="/confirm/" method="post" class="form-signin" role="form">
         {% csrf_token %}
-        <input type="text" name="code" value=""/>
-        <input type="submit" value="confirm"/>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control" name="code" placeholder="Enter code" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
     </form>
-</body>
-</html>
+{% endblock %}

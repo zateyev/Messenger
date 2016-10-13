@@ -1,19 +1,24 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
+from django.template.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from messages_.models import Message
 from registrar.models import Registrar
 
 
-@csrf_exempt
 def index(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('base.html')
     return HttpResponse(template.render(request))
 
 
-@csrf_exempt
+def signup(request):
+    return render(request, 'signup.html', {})
+
+
 def register(request):
     template = loader.get_template('confirm.html')
     registrar = Registrar()
@@ -26,6 +31,8 @@ def register(request):
     request.session['form'] = form
     return HttpResponse(template.render(request))
 
+    # return render_to_response('confirm.html', RequestContext(request, {}))
+
 
 @csrf_exempt
 def confirm(request):
@@ -37,6 +44,7 @@ def confirm(request):
             return HttpResponse("User with phone %s is already in use" % form['phone'])
     else:
         return HttpResponse(loader.get_template('confirm.html').render(request))
+        # return render(request, 'confirm.html', RequestContext(request, locals()))
 
 
 def profile(request):
