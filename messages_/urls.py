@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     url(r'^confirm/', views.confirm, name='confirm'),
     url(r'^accounts/profile/', views.profile, name='profile'),
+    url(r'^accounts/new_message/', views.new_message, name='new_message'),
+    url(r'^accounts/write_message/', views.write_message, name='write_message'),
 ]

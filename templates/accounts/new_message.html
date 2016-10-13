@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block navigator %}
+    <li class="active"><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
+    <li><a href="#">Новое сообщение</a></li>
+    <li><a href="#">Log out</a></li>
+{% endblock %}
+{% block content %}
+    <form action="{% url 'write_message' %}" method="post" class="form-signin" role="form">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="receiver" size="40" placeholder="Номер получателя:" required autofocus>
+        <textarea name="text" cols="40" rows="3" class="form-control" placeholder="Введите сообщение"></textarea>
+        <input type="reset" value="Очистить">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+{% endblock %}

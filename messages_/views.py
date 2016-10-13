@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
@@ -5,6 +6,7 @@ from django.template import loader
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
+from messages_.models import Message
 from registrar.models import Registrar
 
 
@@ -48,3 +50,22 @@ def confirm(request):
 def profile(request):
     template = loader.get_template('accounts/profile.html')
     return HttpResponse(template.render({'request': request}, request))
+
+
+def new_message(request):
+    template = loader.get_template('accounts/new_message.html')
+    return HttpResponse(template.render({'request': request}, request))
+
+
+@csrf_exempt
+def write_message(request):
+    receiver = text = ''
+    if request.POST:
+        receiver = request.POST.get('receiver')
+        text = request.POST.get('text')
+    print(receiver)
+    receiver = User.objects.create_user(receiver)
+    # user.save()
+    message = Message.create(text, request.user, receiver)
+    message.save()
+    return HttpResponse("Your message has been sent")
