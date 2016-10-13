@@ -51,6 +51,7 @@ def profile(request):
     template = loader.get_template('accounts/profile.html')
     return HttpResponse(template.render({'request': request}, request))
 
+
 def new_message(request):
     template = loader.get_template('accounts/new_message.html')
     return HttpResponse(template.render({'request': request}, request))
@@ -68,8 +69,3 @@ def write_message(request):
     message = Message.create(text, request.user, receiver)
     message.save()
     return HttpResponse("Your message has been sent")
-
-
-
-
-

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block navigator %}
-    <li class="active"><a href="/accounts/profile/">{{ request.user.username }}</a></li>
-    <li><a href="/write_message/">Написать сообщение</a></li>
+    <li class="active"><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
+    <li><a href="{% url 'new_message' %}">Написать сообщение</a></li>
     <li><a href="#">Log out</a></li>
 {% endblock %}
-{% block content %}
