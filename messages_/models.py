@@ -1,8 +1,6 @@
-from datetime import datetime
-
 from django.contrib.auth.models import User
-from django.utils import timezone
 from django.db import models
+from django.utils import timezone
 
 
 class Message(models.Model):
@@ -19,12 +17,12 @@ class Message(models.Model):
     )
     state = models.IntegerField(choices=STATE_CHOICES, default=STATE_NEW)
     sender = models.OneToOneField(User, related_name='sender')
-    receiver = models.OneToOneField(User, related_name='receiver', default=timezone.now)
-    timestamp = models.DateTimeField()
+    receiver = models.OneToOneField(User, related_name='receiver')
+    timestamp = models.DateTimeField(default=timezone.now)
 
     @classmethod
     def create(cls, text, sender, receiver):
-        message = cls(text=text, sender=sender, receiver=receiver, state=1, timestamp= datetime.now(tz=None))
+        message = cls(text=text, sender=sender, receiver=receiver, state=1, timestamp=timezone.now)
         return message
 
     def __str__(self):

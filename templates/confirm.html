@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form action="/confirm/" method="post" class="form-signin" role="form">
+    <form action="{% url 'confirm' %}" method="post" class="form-signin" role="form">
         {% csrf_token %}
-        <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="form-control" name="code" placeholder="Enter code" required autofocus>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
     </form>
