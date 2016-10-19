@@ -32,7 +32,7 @@ def confirm(request):
     form = request.session.get('form')
     if str(request.session.get('code')) == str(request.POST.get('code')):
         if Registrar.register(form['phone'], form['password']):
-            return HttpResponse("Thank you, your account has been created!")
+            return render(request, 'base.html', {})
         else:
             return HttpResponse("User with phone %s is already in use" % form['phone'])
     else:
@@ -62,3 +62,8 @@ def write_message(request):
 def view_inbox(request):
     context = {'messages': Message.objects.all().filter(receiver=request.user)}
     return render(request, 'accounts/inbox.html', context)
+
+
+def view_sent(request):
+    context = {'messages': Message.objects.all().filter(sender=request.user)}
+    return render(request, 'accounts/sent.html', context)
