@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^accounts/profile/', views.profile, name='profile'),
     url(r'^accounts/new_message/', views.new_message, name='new_message'),
     url(r'^accounts/write_message/', views.write_message, name='write_message'),
+    url(r'^accounts/inbox/', views.view_inbox, name='inbox'),
 ]

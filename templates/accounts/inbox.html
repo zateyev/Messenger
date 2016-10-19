@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block navigator %}
+    <li><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
+    <li><a href="{% url 'new_message' %}">Написать сообщение</a></li>
+    <li class="active"><a href="{% url 'inbox' %}">Входящие</a></li>
+    <li><a href="{% url 'logout' %}">Log out</a></li>
+{% endblock %}
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>От кого</th>
+            <th>Текст</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.sender }}</td>
+                <td>{{ message.text }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

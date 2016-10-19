@@ -16,13 +16,13 @@ class Message(models.Model):
         (STATE_FAVORITE, 'Favorite')
     )
     state = models.IntegerField(choices=STATE_CHOICES, default=STATE_NEW)
-    sender = models.OneToOneField(User, related_name='sender')
-    receiver = models.OneToOneField(User, related_name='receiver')
+    sender = models.ForeignKey(User, related_name='sender')
+    receiver = models.ForeignKey(User, related_name='receiver')
     timestamp = models.DateTimeField(default=timezone.now)
 
     @classmethod
     def create(cls, text, sender, receiver):
-        message = cls(text=text, sender=sender, receiver=receiver, state=1, timestamp=timezone.now)
+        message = cls(text=text, sender=sender, receiver=receiver)
         return message
 
     def __str__(self):

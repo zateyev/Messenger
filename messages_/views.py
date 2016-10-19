@@ -53,9 +53,12 @@ def write_message(request):
     if request.POST:
         receiver = request.POST.get('receiver')
         text = request.POST.get('text')
-    print(receiver)
-    receiver = User.objects.create_user(receiver)
-    # user.save()
+    receiver = User.objects.filter(username=receiver)[0]
     message = Message.create(text, request.user, receiver)
     message.save()
     return HttpResponse("Your message has been sent")
+
+
+def view_inbox(request):
+    context = {'messages': Message.objects.all().filter(receiver=request.user)}
+    return render(request, 'accounts/inbox.html', context)

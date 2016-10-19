@@ -2,5 +2,6 @@
 {% block navigator %}
     <li class="active"><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
     <li><a href="{% url 'new_message' %}">Написать сообщение</a></li>
+    <li><a href="{% url 'inbox' %}">Входящие</a></li>
     <li><a href="{% url 'logout' %}">Log out</a></li>
 {% endblock %}
