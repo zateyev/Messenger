@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 
+from messages_.forms import SignUpForm
 from messages_.models import Message
 from registrar.models import Registrar
 
@@ -13,19 +14,18 @@ def index(request):
 
 
 def signup(request):
-    return render(request, 'signup.html', {})
-
-
-def register(request):
-    registrar = Registrar()
-    code = registrar.generate_code()
-    request.session['code'] = code
-    form = {}
-    if request.POST:
-        form['phone'] = request.POST.get('phone')
-        form['password'] = request.POST.get('password')
-    request.session['form'] = form
-    return render(request, 'confirm.html', {})
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)  # binding data to the form
+        if form.is_valid():
+            registrar = Registrar()
+            code = registrar.generate_code()
+            request.session['code'] = code
+            request.session['form'] = {'phone': form.cleaned_data['phone'], 'password': form.cleaned_data['password']}
+            return render(request, 'confirm.html', {})
+        else:
+            return render(request, 'signup.html', {'form': form})
+    else:
+        return render(request, 'signup.html', {'form': SignUpForm()})
 
 
 def confirm(request):
@@ -56,7 +56,7 @@ def write_message(request):
     receiver = User.objects.filter(username=receiver)[0]
     message = Message.create(text, request.user, receiver)
     message.save()
-    return HttpResponse("Your message has been sent")
+    return redirect('sent')
 
 
 def view_inbox(request):

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'messages_',
     'registrar',
     'bootstrap3',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

@@ -33,8 +33,8 @@
         <ul class="nav nav-pills pull-right">
             {% block navigator %}
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="/signup/">Sign up</a></li>
-                <li><a href="/login/">Sign in</a></li>
+                <li><a href="{% url 'signup' %}">Sign up</a></li>
+                <li><a href="{% url 'login' %}">Sign in</a></li>
             {% endblock %}
         </ul>
         <h3 class="text-muted">Messenger</h3>
@@ -45,36 +45,9 @@
             <h1>We connect people</h1>
             <p class="lead">Free.Light.Simple.Elegant.</p>
             <p>Experience the new way of communication.</p>
-            <p><a class="btn btn-lg btn-success" href="/signup/" role="button">Sign up today</a></p>
+            <p><a class="btn btn-lg btn-success" href="{% url 'signup' %}" role="button">Sign up today</a></p>
         {% endblock %}
     </div>
-
-{#    <div class="row marketing">#}
-{#        <div class="col-lg-6">#}
-{#            <h4>Subheading</h4>#}
-{#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
-{##}
-{#            <h4>Subheading</h4>#}
-{#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet#}
-{#                fermentum.</p>#}
-{##}
-{#            <h4>Subheading</h4>#}
-{#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
-{#        </div>#}
-{##}
-{#        <div class="col-lg-6">#}
-{#            <h4>Subheading</h4>#}
-{#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
-{##}
-{#            <h4>Subheading</h4>#}
-{#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet#}
-{#                fermentum.</p>#}
-{##}
-{#            <h4>Subheading</h4>#}
-{#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
-{#        </div>#}
-{#    </div>#}
-
     <div class="footer">
         <p>&copy; HALOXYLON Inc. 2016</p>
     </div>

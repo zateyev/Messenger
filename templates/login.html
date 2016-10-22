@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block navigator %}
     <li><a href="/">Home</a></li>
-    <li><a href="/signup/">Sign up</a></li>
+    <li><a href="{% url 'signup' %}">Sign up</a></li>
     <li class="active"><a href="#">Sign in</a></li>
 {% endblock %}
 {% block content %}
@@ -9,7 +9,9 @@
         {% csrf_token %}
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="form-control" name="username" placeholder="Phone number" required autofocus>
+        {{ form.username.errors }}
         <input type="password" class="form-control" name="password" placeholder="Password" required>
+        {{ form.password.errors }}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 {% endblock %}
