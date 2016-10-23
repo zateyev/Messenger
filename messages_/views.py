@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from messages_.forms import SignUpForm
+from messages_.forms import SignUpForm, MessageForm
 from messages_.models import Message
 from registrar.models import Registrar
 
@@ -45,18 +45,19 @@ def profile(request):
 
 
 def new_message(request):
-    return render(request, 'accounts/new_message.html', {})
-
-
-def write_message(request):
-    receiver = text = ''
-    if request.POST:
-        receiver = request.POST.get('receiver')
-        text = request.POST.get('text')
-    receiver = User.objects.filter(username=receiver)[0]
-    message = Message.create(text, request.user, receiver)
-    message.save()
-    return redirect('sent')
+    if request.method == 'POST':
+        form = MessageForm(request.POST)  # binding data to the form
+        if form.is_valid():
+            receiver = form.cleaned_data['receiver']
+            text = form.cleaned_data['text']
+            receiver = User.objects.filter(username=receiver)[0]
+            message = Message.create(text, request.user, receiver)
+            message.save()
+            return redirect('sent')
+        else:
+            return render(request, 'accounts/new_message.html', {'form': form})
+    else:
+        return render(request, 'accounts/new_message.html', {'form': MessageForm()})
 
 
 def view_inbox(request):

@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 
 
+phone_number = RegexValidator(regex=r'^\d{10}$',
+                              message='Phone number must be entered in the format: 1234567890. Without +7 or 8')
+
+
 class SignUpForm(forms.Form):
-    phone_number = RegexValidator(regex=r'^\d{10}$',
-                                  message='Phone number must be entered in the format: 1234567890. Without +7 or 8')
     phone = forms.CharField(validators=[phone_number])
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -14,3 +16,14 @@ class SignUpForm(forms.Form):
         if User.objects.filter(username=phone).exists():
             raise forms.ValidationError('Phone number already exists')
         return phone
+
+
+class MessageForm(forms.Form):
+    receiver = forms.CharField(validators=[phone_number])
+    text = forms.CharField(widget=forms.Textarea)
+
+    def clean_receiver(self):
+        receiver = self.cleaned_data['receiver']
+        if not User.objects.filter(username=receiver).exists():
+            raise forms.ValidationError('The person with this number is not in service')
+        return receiver
