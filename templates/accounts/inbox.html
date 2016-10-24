@@ -12,6 +12,7 @@
         <tr>
             <th>От кого</th>
             <th>Текст</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
             <tr>
                 <td>{{ message.sender }}</td>
                 <td>{{ message.text }}</td>
+                <td>{{ message.timestamp }}</td>
             </tr>
         {% endfor %}
         </tbody>

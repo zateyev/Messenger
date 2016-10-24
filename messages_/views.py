@@ -61,10 +61,10 @@ def new_message(request):
 
 
 def view_inbox(request):
-    context = {'messages': Message.objects.all().filter(receiver=request.user)}
+    context = {'messages': Message.objects.all().filter(receiver=request.user).order_by('-timestamp')}
     return render(request, 'accounts/inbox.html', context)
 
 
 def view_sent(request):
-    context = {'messages': Message.objects.all().filter(sender=request.user)}
+    context = {'messages': Message.objects.all().filter(sender=request.user).order_by('-timestamp')}
     return render(request, 'accounts/sent.html', context)
