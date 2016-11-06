@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-06 03:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: messages_/forms.py:8
+msgid "Phone number must be entered in the format: 1234567890. Without +7 or 8"
+msgstr "Введите 10-значный номер телефона. Без +7 или 8"
+
+#: messages_/forms.py:18
+msgid "Phone number already exists"
+msgstr "Пользователь с таким номером уже зарегистрирован"
+
+#: messages_/forms.py:29
+msgid "The person with this number is not in service"
+msgstr "Пользователя с таким номером не существует"
+
+#: templates/accounts/profile.html:5
+msgid "Create"
+msgstr "Создать"
+
+#: templates/accounts/profile.html:6
+msgid "Inbox"
+msgstr "Входящие"
+
+#: templates/accounts/profile.html:7
+msgid "Sent"
+msgstr "Отправленные"
+
+#: templates/accounts/profile.html:8
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/base.html:36 templates/login.html:4 templates/signup.html:4
+msgid "Home"
+msgstr "Главная"
+
+#: templates/base.html:37 templates/login.html:5 templates/signup.html:5
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: templates/base.html:38 templates/login.html:6 templates/login.html:16
+#: templates/signup.html:6
+msgid "Sign in"
+msgstr "Войти"
+
+#: templates/base.html:46
+msgid "We connect people"
+msgstr "Мы соединяем людей"
+
+#: templates/base.html:47
+msgid "Free.Light.Simple.Elegant."
+msgstr "Бесплатно.Легко.Просто.Элегантный"
+
+#: templates/base.html:48
+msgid "Experience the new way of communication."
+msgstr "Испытайте новый способ общения"
+
+#: templates/base.html:49
+msgid "Sign up today"
+msgstr "Зарегистрироваться сейчас"
+
+#: templates/base.html:54
+msgid "Change your locale"
+msgstr "Изменить язык"
+
+#: templates/base.html:63
+msgid "change"
+msgstr "изменить"
+
+#: templates/login.html:11
+msgid "Please sign in"
+msgstr "Войти в систему"
+
+#: templates/login.html:12 templates/signup.html:13
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: templates/login.html:14 templates/signup.html:16
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/signup.html:11
+msgid "Please sign up"
+msgstr "Введите данные"

@@ -9,8 +9,7 @@ from registrar.models import Registrar
 
 
 def index(request):
-    template = loader.get_template('base.html')
-    return HttpResponse(template.render(request))
+    return render(request, 'base.html', {})
 
 
 def signup(request):

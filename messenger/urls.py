@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'template_name': 'base.html'}, name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block navigator %}
     <li class="active"><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
-    <li><a href="{% url 'new_message' %}">Создать</a></li>
-    <li><a href="{% url 'inbox' %}">Входящие</a></li>
-    <li><a href="{% url 'sent' %}">Отправленные</a></li>
-    <li><a href="{% url 'logout' %}">Log out</a></li>
+    <li><a href="{% url 'new_message' %}">{% trans 'Create' %}</a></li>
+    <li><a href="{% url 'inbox' %}">{% trans 'Inbox' %}</a></li>
+    <li><a href="{% url 'sent' %}">{% trans 'Sent' %}</a></li>
+    <li><a href="{% url 'logout' %}">{% trans 'Log out' %}</a></li>
+{% endblock %}
+{% block switch %}
+    <input name="next" type="hidden" value="{% url 'profile' %}"/><br/>
 {% endblock %}

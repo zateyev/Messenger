@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block navigator %}
-    <li><a href="/">Home</a></li>
-    <li class="active"><a href="#">Sign up</a></li>
-    <li><a href="{% url 'login' %}">Sign in</a></li>
+    <li><a href="/">{% trans 'Home' %}</a></li>
+    <li class="active"><a href="#">{% trans 'Sign up' %}</a></li>
+    <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
 {% endblock %}
 {% block content %}
     <form action="{% url 'signup' %}" method="post" class="form-signin" role="form">
         {% csrf_token %}
-        <h2 class="form-signin-heading">Please sign up</h2>
+        <h2 class="form-signin-heading">{% trans 'Please sign up' %}</h2>
         {% load widget_tweaks %}
-        {% render_field form.phone class+="form-control" placeholder="Phone number" %}
+        {% trans 'Phone number' as pn %}
+        {% render_field form.phone class+="form-control" placeholder=pn %}
         {{ form.phone.errors }}
-        {% render_field form.password class+="form-control" placeholder="Password" %}
+        {% trans 'Password' as psw %}
+        {% render_field form.password class+="form-control" placeholder=psw %}
         {{ form.password.errors }}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
     </form>
+{% endblock %}
+{% block switch %}
+    <input name="next" type="hidden" value="{% url 'signup' %}"/><br/>
 {% endblock %}
