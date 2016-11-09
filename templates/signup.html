@@ -6,19 +6,18 @@
     <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
 {% endblock %}
 {% block content %}
-    <form action="{% url 'signup' %}" method="post" class="form-signin" role="form">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">{% trans 'Please sign up' %}</h2>
-        {% load widget_tweaks %}
-        {% trans 'Phone number' as pn %}
-        {% render_field form.phone class+="form-control" placeholder=pn %}
-        {{ form.phone.errors }}
-        {% trans 'Password' as psw %}
-        {% render_field form.password class+="form-control" placeholder=psw %}
-        {{ form.password.errors }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-    </form>
-{% endblock %}
-{% block switch %}
-    <input name="next" type="hidden" value="{% url 'signup' %}"/><br/>
+    <div class="login">
+        <form action="{% url 'signup' %}" method="post" class="form-signin" role="form">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">{% trans 'Please sign up' %}</h2>
+            {% load widget_tweaks %}
+            {% trans 'Phone number' as pn %}
+            {% render_field form.phone class+="form-control" placeholder=pn %}
+            {{ form.phone.errors }}
+            {% trans 'Password' as psw %}
+            {% render_field form.password class+="form-control" placeholder=psw %}
+            {{ form.password.errors }}
+            <button class="btn btn-lg btn-default" type="submit">Sign up</button>
+        </form>
+    </div>
 {% endblock %}

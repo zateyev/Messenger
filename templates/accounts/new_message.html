@@ -1,12 +1,6 @@
-{% extends 'base.html' %}
-{% block navigator %}
-    <li><a href="{% url 'profile' %}">{{ request.user.username }}</a></li>
-    <li class="active"><a href="#">Создать</a></li>
-    <li><a href="{% url 'inbox' %}">Входящие</a></li>
-    <li><a href="{% url 'sent' %}">Отправленные</a></li>
-    <li><a href="{% url 'logout' %}">Log out</a></li>
-{% endblock %}
+{% extends 'accounts/profile.html' %}
 {% block content %}
+    <h2 class="sub-header">New message</h2>
     <form action="{% url 'new_message' %}" method="post" class="form-signin" role="form">
         {% csrf_token %}
         {% load widget_tweaks %}

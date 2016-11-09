@@ -7,3 +7,4 @@ pyflakes==1.2.3
 virtualenv==15.0.3
 virtualenvwrapper-win==1.2.1
 django_extensions
+django-widget-tweaks==1.4.1

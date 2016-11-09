@@ -6,16 +6,16 @@
     <li class="active"><a href="#">{% trans 'Sign in' %}</a></li>
 {% endblock %}
 {% block content %}
-    <form method="post" class="form-signin" role="form">
-        {% csrf_token %}
-        <h2 class="form-signin-heading">{% trans 'Please sign in' %}</h2>
-        <input type="text" class="form-control" name="username" placeholder="{% trans 'Phone number' %}" required autofocus>
-        {{ form.username.errors }}
-        <input type="password" class="form-control" name="password" placeholder="{% trans 'Password' %}" required>
-        {{ form.password.errors }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Sign in' %}</button>
-    </form>
-{% endblock %}
-{% block switch %}
-    <input name="next" type="hidden" value="{% url 'login' %}"/><br/>
+    <div class="login">
+        <form method="post" class="form-signin" role="form">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">{% trans 'Please sign in' %}</h2>
+            <input type="text" class="form-control" name="username" placeholder="{% trans 'Phone number' %}" required
+                   autofocus>
+            {{ form.username.errors }}
+            <input type="password" class="form-control" name="password" placeholder="{% trans 'Password' %}" required>
+            {{ form.password.errors }}
+            <button class="btn btn-lg btn-default" type="submit">{% trans 'Sign in' %}</button>
+        </form>
+    </div>
 {% endblock %}

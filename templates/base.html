@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 {% load i18n %}
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="/static/css/cover.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -29,48 +29,77 @@
 
 <body>
 
-<div class="container">
-    <div class="header">
-        <ul class="nav nav-pills pull-right">
-            {% block navigator %}
-                <li class="active"><a href="#">{% trans 'Home' %}</a></li>
-                <li><a href="{% url 'signup' %}">{% trans 'Sign up' %}</a></li>
-                <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
-            {% endblock %}
-        </ul>
-        <h3 class="text-muted">Messenger</h3>
+<form id="set_ru" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}"/>
+    <input name="language" type="hidden" value="ru"/>
+</form>
+<form id="set_en" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}"/>
+    <input name="language" type="hidden" value="en"/>
+</form>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Messenger</h3>
+                    <ul class="nav masthead-nav">
+                        {% block navigator %}
+                            <li class="active"><a href="#">{% trans 'Home' %}</a></li>
+                            <li><a href="{% url 'signup' %}">{% trans 'Sign up' %}</a></li>
+                            <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
+                        {% endblock %}
+                            <li>
+                                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false">
+                                    Language
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li>
+                                        <button class="set-lang" type="submit" form="set_en">English</button>
+                                    </li>
+                                    <li>
+                                        <button class="set-lang" type="submit" form="set_ru">Russian</button>
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                {% block content %}
+                    <h1 class="cover-heading">{% trans 'We connect people' %}</h1>
+                    <p class="lead">{% trans 'Free.Light.Simple.Elegant.' %}</p>
+                    <p class="lead">{% trans 'Experience the new way of communication.' %}</p>
+                    <p class="lead">
+                        <a href="{% url 'signup' %}" class="btn btn-lg btn-default">{% trans 'Sign up today' %}</a>
+                    </p>
+                {% endblock %}
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>&copy; HALOXYLON Inc. 2016</p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="jumbotron">
-        {% block content %}
-            <h1>{% trans 'We connect people' %}</h1>
-            <p class="lead">{% trans 'Free.Light.Simple.Elegant.' %}</p>
-            <p>{% trans 'Experience the new way of communication.' %}</p>
-            <p><a class="btn btn-lg btn-success" href="{% url 'signup' %}" role="button">{% trans 'Sign up today' %}</a>
-            </p>
-        {% endblock %}
-    </div>
-    <div class="footer">
-        {% trans 'Change your locale' %}:
-        <form action="/i18n/setlang/" method="POST">
-            {% csrf_token %}
-            {% block switch %}<input name="next" type="hidden" value="/"/><br/>{% endblock %}
-            <select name="language">
-                {% for lang in LANGUAGES %}
-                    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-                {% endfor %}
-            </select><br/>
-            <input type="submit" value="{% trans 'change' %}"/>
-        </form>
-
-        <p>&copy; HALOXYLON Inc. 2016</p>
-    </div>
-
-</div> <!-- /container -->
-
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/docs.min.js"></script>
 </body>
 </html>
