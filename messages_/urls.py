@@ -25,4 +25,9 @@ urlpatterns = [
     url(r'^accounts/new_message/', views.new_message, name='new_message'),
     url(r'^accounts/inbox/', views.view_inbox, name='inbox'),
     url(r'^accounts/sent/', views.view_sent, name='sent'),
+    url(r'^accounts/view_favorites/', views.view_favorites, name='view_favorites'),
+    url(r'^accounts/add_to_favorites/', views.add_to_favorites, name='add_to_favorites'),
+    url(r'^accounts/delete_from_inbox/', views.delete_from_inbox, name='delete_from_inbox'),
+    url(r'^accounts/delete_from_sent/', views.delete_from_sent, name='delete_from_sent'),
+    url(r'^accounts/delete_from_starred/', views.delete_from_starred, name='delete_from_starred'),
 ]

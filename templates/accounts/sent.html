@@ -7,6 +7,7 @@
             <tr>
                 <th>Кому</th>
                 <th>Текст</th>
+                <th>Текст</th>
             </tr>
             </thead>
             <tbody>
@@ -15,6 +16,13 @@
                     <td>{{ message.receiver }}</td>
                     <td>{{ message.text }}</td>
                     <td>{{ message.timestamp }}</td>
+                    <td>
+                        <form id="delete_from_sent" action="{% url 'delete_from_sent' %}"
+                              method="post">{% csrf_token %}
+                            <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                            <button class="" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from messages_.forms import SignUpForm, MessageForm
-from messages_.models import Message
+from messages_.models import Message, FavoriteMessage, Account
 from registrar.models import Registrar
 
 
@@ -52,6 +52,10 @@ def new_message(request):
             receiver = User.objects.filter(username=receiver)[0]
             message = Message.create(text, request.user, receiver)
             message.save()
+            sender_account = Account.objects.get(user=request.user)
+            sender_account.sent.add(message)
+            receiver_account = Account.objects.get(user=receiver)
+            receiver_account.inbox.add(message)
             return redirect('sent')
         else:
             return render(request, 'accounts/new_message.html', {'form': form})
@@ -59,11 +63,51 @@ def new_message(request):
         return render(request, 'accounts/new_message.html', {'form': MessageForm()})
 
 
+def add_to_favorites(request):
+    message_id = request.POST.get('message_id')
+    message = Message.objects.get(pk=message_id)
+    account = Account.objects.get(user=request.user)
+    account.starred.add(message)
+    return redirect('view_favorites')
+
+
+def delete_from_inbox(request):
+    message_id = request.POST.get('message_id')
+    message = Message.objects.get(pk=message_id)
+    account = Account.objects.get(user=request.user)
+    account.inbox.remove(message)
+    return redirect('inbox')
+
+
+def delete_from_sent(request):
+    message_id = request.POST.get('message_id')
+    message = Message.objects.get(pk=message_id)
+    account = Account.objects.get(user=request.user)
+    account.sent.remove(message)
+    return redirect('sent')
+
+
+def delete_from_starred(request):
+    message_id = request.POST.get('message_id')
+    message = Message.objects.get(pk=message_id)
+    account = Account.objects.get(user=request.user)
+    account.starred.remove(message)
+    return redirect('view_favorites')
+
+
+def view_favorites(request):
+    account = Account.objects.get(user=request.user)
+    context = {'favorite_messages': account.starred.order_by('-timestamp')}
+    return render(request, 'accounts/favorite_messages.html', context)
+
+
 def view_inbox(request):
-    context = {'messages': Message.objects.all().filter(receiver=request.user).order_by('-timestamp')}
+    account = Account.objects.get(user=request.user)
+    context = {'messages': account.inbox.order_by('-timestamp')}
     return render(request, 'accounts/inbox.html', context)
 
 
 def view_sent(request):
-    context = {'messages': Message.objects.all().filter(sender=request.user).order_by('-timestamp')}
+    account = Account.objects.get(user=request.user)
+    context = {'messages': account.sent.order_by('-timestamp')}
     return render(request, 'accounts/sent.html', context)

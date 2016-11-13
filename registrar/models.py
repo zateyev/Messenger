@@ -3,6 +3,8 @@ from random import randint
 from django.contrib.auth.models import User
 from django.db import models
 
+from messages_.models import Account
+
 
 class Registrar(models.Model):
     code = models.SmallIntegerField()
@@ -18,6 +20,8 @@ class Registrar(models.Model):
             user = User.objects.create_user(username)
             user.set_password(password)
             user.save()
+            account = Account.create(user)
+            account.save()
             return True
         else:
             return False

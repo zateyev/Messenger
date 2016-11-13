@@ -1,0 +1,33 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block content %}
+    <h2 class="sub-header">Favorite Messages</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>От кого</th>
+                <th>Текст</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for favorite_message in favorite_messages %}
+                <tr>
+                    <td>{{ favorite_message.sender }}</td>
+                    <td>{{ favorite_message.text }}</td>
+                    <td>{{ favorite_message.timestamp }}</td>
+                    <td>
+                        <form id="delete_from_starred" action="{% url 'delete_from_starred' %}"
+                              method="post">{% csrf_token %}
+                            <input name="message_id" type="hidden" value="{{ favorite_message.id }}"/>
+                            <button class="" type="submit">Remove from favorites</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

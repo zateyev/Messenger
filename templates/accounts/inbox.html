@@ -9,6 +9,8 @@
                 <th>От кого</th>
                 <th>Текст</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +19,18 @@
                     <td>{{ message.sender }}</td>
                     <td>{{ message.text }}</td>
                     <td>{{ message.timestamp }}</td>
+                    <td>
+                        <form id="add_to_favorites" action="{% url 'add_to_favorites' %}" method="post">{% csrf_token %}
+                            <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                            <button class="" type="submit">Add to favorite</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form id="delete_from_inbox" action="{% url 'delete_from_inbox' %}" method="post">{% csrf_token %}
+                            <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                            <button class="" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

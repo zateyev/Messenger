@@ -29,6 +29,23 @@ class Message(models.Model):
         return self.text
 
 
+class Account(models.Model):
+    user = models.ForeignKey(User)
+    inbox = models.ManyToManyField(Message, related_name='inbox')
+    sent = models.ManyToManyField(Message, related_name='sent')
+    starred = models.ManyToManyField(Message, related_name='starred')
+
+    @classmethod
+    def create(cls, user):
+        account = cls(user=user)
+        return account
+
+
 class FavoriteMessage(models.Model):
     message = models.ForeignKey(Message)
     user = models.ForeignKey(User)
+
+    @classmethod
+    def create(cls, message, user):
+        favorite_message = cls(message=message, user=user)
+        return favorite_message
