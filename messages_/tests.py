@@ -3,6 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from messages_.forms import SignUpForm, MessageForm
+from messages_.models import Message
 
 
 class ViewsTestCase(TestCase):
@@ -20,6 +21,14 @@ class ViewsTestCase(TestCase):
         resp = self.client.get(reverse('view_favorites'))
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('<td>9234116074</td>' in resp.content.decode())
+
+    def test_new_message(self):
+        self.client.force_login(self.user)
+        form_data = {'receiver': '9234116075',
+                     'text': 'qwerty'}
+        resp = self.client.post(reverse('new_message'), form_data)
+        Message.objects.get(text='qwerty', receiver__username='9234116075')
+        self.assertEqual(resp.status_code, 302)
 
 
 class FormsTestCase(TestCase):
