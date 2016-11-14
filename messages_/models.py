@@ -39,13 +39,3 @@ class Account(models.Model):
     def create(cls, user):
         account = cls(user=user)
         return account
-
-
-class FavoriteMessage(models.Model):
-    message = models.ForeignKey(Message)
-    user = models.ForeignKey(User)
-
-    @classmethod
-    def create(cls, message, user):
-        favorite_message = cls(message=message, user=user)
-        return favorite_message

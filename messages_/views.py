@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from messages_.forms import SignUpForm, MessageForm
-from messages_.models import Message, FavoriteMessage, Account
+from messages_.models import Message, Account
 from registrar.models import Registrar
 
 
