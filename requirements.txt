@@ -8,3 +8,6 @@ virtualenv==15.0.3
 virtualenvwrapper-win==1.2.1
 django_extensions
 django-widget-tweaks==1.4.1
+dj-database-url==0.4.1
+gunicorn==19.6.0
+whitenoise==2.0.6
