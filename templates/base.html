@@ -15,7 +15,7 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/cover.css" rel="stylesheet">
+    {% block style %}<link href="/static/css/cover.css" rel="stylesheet">{% endblock %}
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -37,22 +37,22 @@
     <input name="next" type="hidden" value="{{ redirect_to }}"/>
     <input name="language" type="hidden" value="en"/>
 </form>
+{% block body %}
+    <div class="site-wrapper">
 
-<div class="site-wrapper">
+        <div class="site-wrapper-inner">
 
-    <div class="site-wrapper-inner">
+            <div class="cover-container">
 
-        <div class="cover-container">
-
-            <div class="masthead clearfix">
-                <div class="inner">
-                    <h3 class="masthead-brand">Messenger</h3>
-                    <ul class="nav masthead-nav">
-                        {% block navigator %}
-                            <li class="active"><a href="#">{% trans 'Home' %}</a></li>
-                            <li><a href="{% url 'signup' %}">{% trans 'Sign up' %}</a></li>
-                            <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
-                        {% endblock %}
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Messenger</h3>
+                        <ul class="nav masthead-nav">
+                            {% block navigator %}
+                                <li class="active"><a href="#">{% trans 'Home' %}</a></li>
+                                <li><a href="{% url 'signup' %}">{% trans 'Sign up' %}</a></li>
+                                <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
+                            {% endblock %}
                             <li>
                                 <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown"
                                    role="button" aria-haspopup="true" aria-expanded="false">
@@ -68,33 +68,33 @@
                                     </li>
                                 </ul>
                             </li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="inner cover">
-                {% block content %}
-                    <h1 class="cover-heading">{% trans 'We connect people' %}</h1>
-                    <p class="lead">{% trans 'Free.Light.Simple.Elegant.' %}</p>
-                    <p class="lead">{% trans 'Experience the new way of communication.' %}</p>
-                    <p class="lead">
-                        <a href="{% url 'signup' %}" class="btn btn-lg btn-default">{% trans 'Sign up today' %}</a>
-                    </p>
-                {% endblock %}
-            </div>
-
-            <div class="mastfoot">
-                <div class="inner">
-                    <p>&copy; HALOXYLON Inc. 2016</p>
+                <div class="inner cover">
+                    {% block content %}
+                        <h1 class="cover-heading">{% trans 'We connect people' %}</h1>
+                        <p class="lead">{% trans 'Free.Light.Simple.Elegant.' %}</p>
+                        <p class="lead">{% trans 'Experience the new way of communication.' %}</p>
+                        <p class="lead">
+                            <a href="{% url 'signup' %}" class="btn btn-lg btn-default">{% trans 'Sign up today' %}</a>
+                        </p>
+                    {% endblock %}
                 </div>
+
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>&copy; HALOXYLON Inc. 2016</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
     </div>
-
-</div>
-
+{% endblock %}
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
