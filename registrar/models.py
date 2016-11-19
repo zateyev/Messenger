@@ -11,9 +11,9 @@ class Registrar(models.Model):
 
     def generate_code(self):
         # self.code = randint(1, 9999)
-        # self.send_code()
-        # return self.code
-        return 1113
+        self.code = 1113
+        self.send_code()
+        return self.code
 
     @staticmethod
     def register(username, password):
