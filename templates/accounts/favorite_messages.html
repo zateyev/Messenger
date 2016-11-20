@@ -1,13 +1,14 @@
 {% extends 'accounts/profile.html' %}
 {% load i18n %}
+{% block title %}<title>{% trans 'Favorite Messages' %}</title>{% endblock %}
 {% block content %}
-    <h2 class="sub-header">Favorite Messages</h2>
+    <h2 class="sub-header">{% trans 'Favorite Messages' %}</h2>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>От кого</th>
-                <th>Текст</th>
+                <th>{% trans 'Sender' %}</th>
+                <th>{% trans 'Message' %}</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -22,7 +23,7 @@
                         <form id="delete_from_starred" action="{% url 'delete_from_starred' %}"
                               method="post">{% csrf_token %}
                             <input name="message_id" type="hidden" value="{{ favorite_message.id }}"/>
-                            <button class="" type="submit">Remove from favorites</button>
+                            <button class="" type="submit">{% trans 'Remove from favorites' %}</button>
                         </form>
                     </td>
                 </tr>

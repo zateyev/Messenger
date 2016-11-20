@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}<title>{% trans 'Log in' %}</title>{% endblock %}
 {% block navigator %}
     <li><a href="/">{% trans 'Home' %}</a></li>
     <li><a href="{% url 'signup' %}">{% trans 'Sign up' %}</a></li>

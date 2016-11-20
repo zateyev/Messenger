@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 03:30+0000\n"
+"POT-Creation-Date: 2016-11-20 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,77 +26,164 @@ msgstr "Введите 10-значный номер телефона. Без +7 
 
 #: messages_/forms.py:18
 msgid "Phone number already exists"
-msgstr "Пользователь с таким номером уже зарегистрирован"
+msgstr "Пользователь с таким номером уже существует"
 
 #: messages_/forms.py:29
 msgid "The person with this number is not in service"
 msgstr "Пользователя с таким номером не существует"
 
-#: templates/accounts/profile.html:5
-msgid "Create"
-msgstr "Создать"
+#: templates/accounts/favorite_messages.html:3
+#: templates/accounts/favorite_messages.html:5
+msgid "Favorite Messages"
+msgstr "Избранные сообщения"
 
-#: templates/accounts/profile.html:6
+#: templates/accounts/favorite_messages.html:10
+#: templates/accounts/inbox.html:10
+msgid "Sender"
+msgstr "Отправитель"
+
+#: templates/accounts/favorite_messages.html:11
+#: templates/accounts/inbox.html:11 templates/accounts/sent.html:11
+msgid "Message"
+msgstr "Сообщение"
+
+#: templates/accounts/favorite_messages.html:26
+msgid "Remove from favorites"
+msgstr "Удалить из избранного"
+
+#: templates/accounts/inbox.html:3 templates/accounts/inbox.html:5
+#: templates/accounts/profile.html:47
 msgid "Inbox"
 msgstr "Входящие"
 
-#: templates/accounts/profile.html:7
-msgid "Sent"
-msgstr "Отправленные"
+#: templates/accounts/inbox.html:26
+msgid "Add to favorite"
+msgstr "Добавить в избранное"
 
-#: templates/accounts/profile.html:8
+#: templates/accounts/inbox.html:32 templates/accounts/sent.html:26
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/accounts/new_message.html:3 templates/accounts/new_message.html:5
+msgid "New message"
+msgstr "Новое сообщение"
+
+#: templates/accounts/new_message.html:9
+msgid "Phone number of recipient"
+msgstr "Номер получателя"
+
+#: templates/accounts/new_message.html:12
+msgid "Type a text"
+msgstr "Введите текст"
+
+#: templates/accounts/new_message.html:15
+msgid "Clean"
+msgstr "Очистить"
+
+#: templates/accounts/new_message.html:16
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/accounts/profile.html:3 templates/accounts/profile.html:60
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/accounts/profile.html:21
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/base.html:36 templates/login.html:4 templates/signup.html:4
+#: templates/accounts/profile.html:25 templates/base.html:59
+msgid "Language"
+msgstr "Язык"
+
+#: templates/accounts/profile.html:30 templates/base.html:64
+msgid "English"
+msgstr "Английский"
+
+#: templates/accounts/profile.html:33 templates/base.html:67
+msgid "Russian"
+msgstr "Русский"
+
+#: templates/accounts/profile.html:46
+msgid "Create"
+msgstr "Создать"
+
+#: templates/accounts/profile.html:48
+msgid "Starred"
+msgstr "Избранные"
+
+#: templates/accounts/profile.html:49
+msgid "Sent"
+msgstr "Отправленные"
+
+#: templates/accounts/profile.html:65
+msgid "Photo"
+msgstr "Фото"
+
+#: templates/accounts/sent.html:3 templates/accounts/sent.html:5
+msgid "Sent mail"
+msgstr "Отправленные"
+
+#: templates/accounts/sent.html:10
+msgid "Receiver"
+msgstr "Получатель"
+
+#: templates/base.html:52 templates/login.html:5 templates/signup.html:5
 msgid "Home"
 msgstr "Главная"
 
-#: templates/base.html:37 templates/login.html:5 templates/signup.html:5
+#: templates/base.html:53 templates/login.html:6 templates/signup.html:3
+#: templates/signup.html:6 templates/signup.html:21
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: templates/base.html:38 templates/login.html:6 templates/login.html:16
-#: templates/signup.html:6
+#: templates/base.html:54 templates/login.html:7 templates/login.html:19
+#: templates/signup.html:7
 msgid "Sign in"
 msgstr "Войти"
 
-#: templates/base.html:46
+#: templates/base.html:77
 msgid "We connect people"
 msgstr "Мы соединяем людей"
 
-#: templates/base.html:47
-msgid "Free.Light.Simple.Elegant."
-msgstr "Бесплатно.Легко.Просто.Элегантный"
+#: templates/base.html:78
+msgid "Free. Light. Simple. Elegant."
+msgstr "Бесплатно. Легко. Просто. Элегантно"
 
-#: templates/base.html:48
+#: templates/base.html:79
 msgid "Experience the new way of communication."
-msgstr "Испытайте новый способ общения"
+msgstr "Испытайте новый способ общения."
 
-#: templates/base.html:49
+#: templates/base.html:81
 msgid "Sign up today"
 msgstr "Зарегистрироваться сейчас"
 
-#: templates/base.html:54
-msgid "Change your locale"
-msgstr "Изменить язык"
+#: templates/confirm.html:3
+msgid "Confirmation"
+msgstr "Подтверждение"
 
-#: templates/base.html:63
-msgid "change"
-msgstr "изменить"
+#: templates/login.html:3
+msgid "Log in"
+msgstr "Войти"
 
-#: templates/login.html:11
+#: templates/login.html:13
 msgid "Please sign in"
 msgstr "Войти в систему"
 
-#: templates/login.html:12 templates/signup.html:13
+#: templates/login.html:14 templates/signup.html:15
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: templates/login.html:14 templates/signup.html:16
+#: templates/login.html:17 templates/signup.html:18
 msgid "Password"
 msgstr "Пароль"
 
-#: templates/signup.html:11
+#: templates/signup.html:13
 msgid "Please sign up"
 msgstr "Введите данные"
+
+#~ msgid "Change your locale"
+#~ msgstr "Изменить язык"
+
+#~ msgid "change"
+#~ msgstr "изменить"

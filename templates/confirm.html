@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}<title>{% trans 'Confirmation' %}</title>{% endblock %}
 {% block content %}
     <div class="login">
         <form action="{% url 'confirm' %}" method="post" class="form-signin" role="form">

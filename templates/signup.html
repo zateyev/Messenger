@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}<title>{% trans 'Sign up' %}</title>{% endblock %}
 {% block navigator %}
     <li><a href="/">{% trans 'Home' %}</a></li>
     <li class="active"><a href="#">{% trans 'Sign up' %}</a></li>
@@ -17,7 +18,7 @@
             {% trans 'Password' as psw %}
             {% render_field form.password class+="form-control" placeholder=psw %}
             {{ form.password.errors }}
-            <button class="btn btn-lg btn-default" type="submit">Sign up</button>
+            <button class="btn btn-lg btn-default" type="submit">{% trans 'Sign up' %}</button>
         </form>
     </div>
 {% endblock %}

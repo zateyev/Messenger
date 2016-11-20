@@ -1,14 +1,18 @@
 {% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block title %}<title>{% trans 'New message' %}</title>{% endblock %}
 {% block content %}
-    <h2 class="sub-header">New message</h2>
+    <h2 class="sub-header">{% trans 'New message' %}</h2>
     <form action="{% url 'new_message' %}" method="post" class="form-signin" role="form">
         {% csrf_token %}
         {% load widget_tweaks %}
-        {% render_field form.receiver class+="form-control" placeholder="Phone number of recipient" %}
+        {% trans 'Phone number of recipient' as recipient %}
+        {% render_field form.receiver class+="form-control" placeholder=recipient %}
         {{ form.receiver.errors }}
-        {% render_field form.text class+="form-control" placeholder="Type a text" %}
+        {% trans 'Type a text' as type %}
+        {% render_field form.text class+="form-control" placeholder=type %}
         {{ form.text.errors }}
-        <input type="reset" value="Очистить">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+        <input type="reset" value="{% trans 'Clean' %}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Send' %}</button>
     </form>
 {% endblock %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}<title>{% trans 'Profile' %}</title>{% endblock %}
 {% block style %}
     <link href="/static/css/dashboard.css" rel="stylesheet">{% endblock %}
 {% block body %}
@@ -21,15 +22,15 @@
                     <li>
                         <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown"
                            role="button" aria-haspopup="true" aria-expanded="false">
-                            Language
+                            {% trans 'Language' %}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                             <li>
-                                <button class="set-lang" type="submit" form="set_en">English</button>
+                                <button class="set-lang" type="submit" form="set_en">{% trans 'English' %}</button>
                             </li>
                             <li>
-                                <button class="set-lang" type="submit" form="set_ru">Russian</button>
+                                <button class="set-lang" type="submit" form="set_ru">{% trans 'Russian' %}</button>
                             </li>
                         </ul>
                     </li>
@@ -44,7 +45,7 @@
                     <li><a href="#"></a></li>
                     <li><a href="{% url 'new_message' %}">{% trans 'Create' %}</a></li>
                     <li><a href="{% url 'inbox' %}">{% trans 'Inbox' %}</a></li>
-                    <li><a href="{% url 'view_favorites' %}">Starred</a></li>
+                    <li><a href="{% url 'view_favorites' %}">{% trans 'Starred' %}</a></li>
                     <li><a href="{% url 'sent' %}">{% trans 'Sent' %}</a></li>
                 </ul>
             </div>
@@ -56,13 +57,12 @@
                             class="glyphicon glyphicon-align-justify"></span></button>
                 </p>
                 {% block content %}
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">{% trans 'Profile' %}</h1>
                     <div class="row placeholders">
                         <div class="col-xs-6 col-sm-3 placeholder">
                             <img data-src="holder.js/200x200/auto/sky" class="img-responsive"
                                  alt="Generic placeholder thumbnail">
-                            <h4>Label</h4>
-                            <span class="text-muted">Something else</span>
+                            <h4>{% trans 'Photo' %}</h4>
                         </div>
                     </div>
                 {% endblock %}
