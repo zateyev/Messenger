@@ -7,6 +7,9 @@
     <li class="active"><a href="#">{% trans 'Sign in' %}</a></li>
 {% endblock %}
 {% block content %}
+    {% if not confirmation == None %}
+    <p>{{ confirmation }}</p>
+    {% endif %}
     <div class="login">
         <form method="post" class="form-signin" role="form">
             {% csrf_token %}

@@ -31,7 +31,7 @@ def confirm(request):
     form = request.session.get('form')
     if str(request.session.get('code')) == str(request.POST.get('code')):
         if Registrar.register(form['phone'], form['password']):
-            return render(request, 'base.html', {})
+            return render(request, 'login.html', {'confirmation': 'Your account has been created'})
         else:
             return HttpResponse("User with phone %s is already in use" % form['phone'])
     else:
