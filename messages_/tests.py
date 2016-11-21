@@ -30,6 +30,16 @@ class ViewsTestCase(TestCase):
         Message.objects.get(text='qwerty', receiver__username='9234116075')
         self.assertEqual(resp.status_code, 302)
 
+    def test_view_sent(self):
+        self.client.force_login(self.user)
+        resp = self.client.get(reverse('sent'))
+        self.assertTrue('<td>hello</td>' in resp.content.decode())
+
+    def test_view_inbox(self):
+        self.client.force_login(self.user)
+        resp = self.client.get(reverse('inbox'))
+        self.assertTrue('<td>Bonjour</td>' in resp.content.decode())
+
 
 class FormsTestCase(TestCase):
     fixtures = ['forms_testdata.json']

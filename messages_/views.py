@@ -111,3 +111,10 @@ def view_sent(request):
     account = Account.objects.get(user=request.user)
     context = {'messages': account.sent.order_by('-timestamp')}
     return render(request, 'accounts/sent.html', context)
+
+
+def read_message(request):
+    message_id = request.GET.get('message_id')
+    message = Message.objects.get(pk=message_id)
+    message.__setstate__(3)
+    return redirect('inbox')
