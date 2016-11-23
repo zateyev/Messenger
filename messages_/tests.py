@@ -38,7 +38,7 @@ class ViewsTestCase(TestCase):
     def test_view_inbox(self):
         self.client.force_login(self.user)
         resp = self.client.get(reverse('inbox'))
-        self.assertTrue('<td>Bonjour</td>' in resp.content.decode())
+        self.assertTrue('<div class="rTableCell">Bonjour</div>' in resp.content.decode())
 
 
 class FormsTestCase(TestCase):

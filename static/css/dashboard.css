@@ -163,7 +163,36 @@ body {
  * Table from divs
  * --------------------------------------------------
  */
-.table { display:table; }
-.table a {text-decoration: none; color: #000000}
-.table-row { display:table-row; }
-.table-cell { display:table-cell;  }
+.rTable {
+  	display: table;
+  	width: 100%;
+}
+.rTable a {
+    text-decoration: none;
+    color: #000000;
+}
+.rTable a:hover {
+    background-color: lightgray;
+}
+.rTableRow {
+  	display: table-row;
+}
+.active-row {
+    background-color: #e4e4e4;
+}
+.rTableCell, .rTableHead {
+  	display: table-cell;
+  	padding: 10px 10px;
+  	border-bottom: 1px solid #999999;
+}
+.rTableHead {
+  	font-weight: bold;
+}
+.rTableFoot {
+  	display: table-footer-group;
+  	font-weight: bold;
+  	background-color: #ddd;
+}
+.rTableBody {
+  	display: table-row-group;
+}

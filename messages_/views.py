@@ -113,8 +113,8 @@ def view_sent(request):
     return render(request, 'accounts/sent.html', context)
 
 
-def read_message(request):
-    message_id = request.GET.get('message_id')
+def read_message(request, message_id):
     message = Message.objects.get(pk=message_id)
-    message.__setstate__(3)
+    message.state = 3
+    message.save()
     return redirect('inbox')

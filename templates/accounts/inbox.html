@@ -3,51 +3,35 @@
 {% block title %}<title>{% trans 'Inbox' %}</title>{% endblock %}
 {% block content %}
     <h2 class="sub-header">{% trans 'Inbox' %}</h2>
-    <div class="table">
-        <a class="table-row" href="/mylink">
-            <div class="table-cell">sdf</div>
-            <div class="table-cell">sdf</div>
-            <div class="table-cell">sdf</div>
-            <div class="table-cell">sdf</div>
-            <div class="table-cell">sdf</div>
-        </a>
-    </div>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>{% trans 'Sender' %}</th>
-                <th>{% trans 'Message' %}</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for message in messages %}
-                <a href="{% url 'read_message' message_id=message.id %}">
-                    <tr class="{% if message.state == 1 %}table-active{% endif %}">
-                        <td>{{ message.sender }}</td>
-                        <td>{{ message.text }}</td>
-                        <td>{{ message.timestamp }}</td>
-                        <td>
-                            <form id="add_to_favorites" action="{% url 'add_to_favorites' %}"
-                                  method="post">{% csrf_token %}
-                                <input name="message_id" type="hidden" value="{{ message.id }}"/>
-                                <button class="" type="submit">{% trans 'Add to favorite' %}</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form id="delete_from_inbox" action="{% url 'delete_from_inbox' %}"
-                                  method="post">{% csrf_token %}
-                                <input name="message_id" type="hidden" value="{{ message.id }}"/>
-                                <button class="" type="submit">{% trans 'Delete' %}</button>
-                            </form>
-                        </td>
-                    </tr>
-                </a>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableHead">{% trans 'Sender' %}</div>
+            <div class="rTableHead">{% trans 'Message' %}</div>
+            <div class="rTableHead">&nbsp;</div>
+            <div class="rTableHead">&nbsp;</div>
+            <div class="rTableHead">&nbsp;</div>
+        </div>
+        {% for message in messages %}
+            <a class="rTableRow {% if message.state == 1 %}active-row{% endif %}"
+               href="{% url 'read_message' message_id=message.id %}">
+                <div class="rTableCell">{{ message.sender }}</div>
+                <div class="rTableCell">{{ message.text }}</div>
+                <div class="rTableCell">{{ message.timestamp }}</div>
+                <div class="rTableCell">
+                    <form id="add_to_favorites" action="{% url 'add_to_favorites' %}"
+                          method="post">{% csrf_token %}
+                        <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                        <button class="" type="submit">{% trans 'Add to favorite' %}</button>
+                    </form>
+                </div>
+                <div class="rTableCell">
+                    <form id="delete_from_inbox" action="{% url 'delete_from_inbox' %}"
+                          method="post">{% csrf_token %}
+                        <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                        <button class="" type="submit">{% trans 'Delete' %}</button>
+                    </form>
+                </div>
+            </a>
+        {% endfor %}
     </div>
 {% endblock %}
