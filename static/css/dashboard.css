@@ -157,3 +157,13 @@ body {
         left: 0;
     }
 }
+
+
+/*
+ * Table from divs
+ * --------------------------------------------------
+ */
+.table { display:table; }
+.table a {text-decoration: none; color: #000000}
+.table-row { display:table-row; }
+.table-cell { display:table-cell;  }

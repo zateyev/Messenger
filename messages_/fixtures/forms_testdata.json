@@ -39,7 +39,7 @@
     "model": "messages_.message",
     "pk": 1,
     "fields": {
-      "text": "hi",
+      "text": "Bonjour",
       "state": 1,
       "sender": 1,
       "receiver": 1,

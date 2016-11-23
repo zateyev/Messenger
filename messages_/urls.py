@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^accounts/delete_from_inbox/', views.delete_from_inbox, name='delete_from_inbox'),
     url(r'^accounts/delete_from_sent/', views.delete_from_sent, name='delete_from_sent'),
     url(r'^accounts/delete_from_starred/', views.delete_from_starred, name='delete_from_starred'),
+    url(r'^accounts/read_message/(?P<message_id>[0-9]+)$', views.read_message, name='read_message'),
 ]
