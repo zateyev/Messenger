@@ -7,7 +7,7 @@ from messages_.models import Message
 
 
 class ViewsTestCase(TestCase):
-    fixtures = ['forms_testdata.json']
+    fixtures = ['testdata.json']
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
@@ -42,7 +42,7 @@ class ViewsTestCase(TestCase):
 
 
 class FormsTestCase(TestCase):
-    fixtures = ['forms_testdata.json']
+    fixtures = ['testdata.json']
 
     def test_sign_up_form(self):
         form_data = {'phone': '9234116076',

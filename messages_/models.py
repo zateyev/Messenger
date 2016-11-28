@@ -16,26 +16,9 @@ class Message(models.Model):
         (STATE_FAVORITE, 'Favorite')
     )
     state = models.IntegerField(choices=STATE_CHOICES, default=STATE_NEW)
-    sender = models.ForeignKey(User, related_name='sender')
-    receiver = models.ForeignKey(User, related_name='receiver')
+    sender = models.ForeignKey(User, related_name='outbox')
+    receiver = models.ForeignKey(User, related_name='inbox')
     timestamp = models.DateTimeField(default=timezone.now)
-
-    @classmethod
-    def create(cls, text, sender, receiver):
-        message = cls(text=text, sender=sender, receiver=receiver)
-        return message
 
     def __str__(self):
         return self.text
-
-
-class Account(models.Model):
-    user = models.ForeignKey(User)
-    inbox = models.ManyToManyField(Message, related_name='inbox')
-    sent = models.ManyToManyField(Message, related_name='sent')
-    starred = models.ManyToManyField(Message, related_name='starred')
-
-    @classmethod
-    def create(cls, user):
-        account = cls(user=user)
-        return account

@@ -1,0 +1,60 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$TpcH5pN8OcGU$GbgMzhOXFHv43D8HrLN5Ug9fylvoF5wSOwviCQ6NJNw=",
+      "last_login": "2016-11-28T19:21:40.561Z",
+      "is_superuser": false,
+      "username": "9234116074",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-11-28T19:02:19.924Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$ZjmSEdUayy4y$Fi1TP4/vJE2x5Sk6e+3gUxANDr0aWICnLq7YEucsmdM=",
+      "last_login": "2016-11-28T19:02:50.200Z",
+      "is_superuser": false,
+      "username": "9234116075",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2016-11-28T19:02:39.247Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "messages_.message",
+    "pk": 1,
+    "fields": {
+      "text": "Bonjour",
+      "state": 3,
+      "sender": 1,
+      "receiver": 1,
+      "timestamp": "2016-11-28T19:04:02.627Z"
+    }
+  },
+  {
+    "model": "messages_.message",
+    "pk": 2,
+    "fields": {
+      "text": "hello",
+      "state": 4,
+      "sender": 1,
+      "receiver": 1,
+      "timestamp": "2016-11-28T19:04:23.777Z"
+    }
+  }
+]

@@ -11,7 +11,7 @@
     <p>{{ confirmation }}</p>
     {% endif %}
     <div class="login">
-        <form method="post" class="form-signin" role="form">
+        <form action="{% url 'login' %}" method="post" class="form-signin" role="form">
             {% csrf_token %}
             <h2 class="form-signin-heading">{% trans 'Please sign in' %}</h2>
             <input type="text" class="form-control" name="username" placeholder="{% trans 'Phone number' %}" required
