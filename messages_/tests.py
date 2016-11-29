@@ -33,7 +33,7 @@ class ViewsTestCase(TestCase):
     def test_view_sent(self):
         self.client.force_login(self.user)
         resp = self.client.get(reverse('sent'))
-        self.assertTrue('<td>hello</td>' in resp.content.decode())
+        self.assertTrue('<div class="rTableCell">hello</div>' in resp.content.decode())
 
     def test_view_inbox(self):
         self.client.force_login(self.user)

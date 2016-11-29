@@ -44,6 +44,13 @@ def profile(request):
     return HttpResponse(template.render({'request': request}, request))
 
 
+def reply(request, receivers_phone):
+    form_data = {'receiver': receivers_phone,
+                 'text': ''}
+    form = MessageForm(data=form_data)
+    return render(request, 'accounts/new_message.html', {'form': form})
+
+
 def new_message(request):
     if request.method == 'POST':
         form = MessageForm(request.POST)  # binding data to the form
@@ -61,38 +68,40 @@ def new_message(request):
 def add_to_favorites(request):
     message_id = request.POST.get('message_id')
     message = get_object_or_404(Message, pk=message_id)
-    message.state = 4
+    message.state = 3
     message.save()
     return redirect('view_favorites')
 
 
 def delete_from_inbox(request):
     message_id = request.POST.get('message_id')
-    request.user.inbox.filter(pk=message_id).delete()
+    message = get_object_or_404(Message, pk=message_id)
+    message.is_visible = False
+    message.save()
     return redirect('inbox')
 
 
 def delete_from_sent(request):
     message_id = request.POST.get('message_id')
-    request.user.outbox.filter(pk=message_id).delete()
+    Message.objects.filter(pk=message_id).delete()
     return redirect('sent')
 
 
 def delete_from_starred(request):
     message_id = request.POST.get('message_id')
     message = get_object_or_404(Message, pk=message_id)
-    message.state = 3
+    message.state = 2
     message.save()
     return redirect('view_favorites')
 
 
 def view_favorites(request):
-    context = {'favorite_messages': request.user.inbox.filter(state=4).order_by('-timestamp')}
+    context = {'favorite_messages': request.user.inbox.filter(state=3).order_by('-timestamp')}
     return render(request, 'accounts/favorite_messages.html', context)
 
 
 def view_inbox(request):
-    context = {'messages': request.user.inbox.all().order_by('-timestamp')}
+    context = {'messages': request.user.inbox.filter(is_visible=True).order_by('-timestamp')}
     return render(request, 'accounts/inbox.html', context)
 
 
@@ -103,6 +112,7 @@ def view_sent(request):
 
 def read_message(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
-    message.state = 3
-    message.save()
-    return redirect('inbox')
+    if not request.user == message.sender:
+        message.state = 2
+        message.save()
+    return render(request, 'accounts/message.html', {'message': message})

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^confirm/', views.confirm, name='confirm'),
     url(r'^accounts/profile/', views.profile, name='profile'),
     url(r'^accounts/new_message/', views.new_message, name='new_message'),
+    url(r'^accounts/reply/(?P<receivers_phone>[0-9]+)$', views.reply, name='reply'),
     url(r'^accounts/inbox/', views.view_inbox, name='inbox'),
     url(r'^accounts/sent/', views.view_sent, name='sent'),
     url(r'^accounts/view_favorites/', views.view_favorites, name='view_favorites'),

@@ -40,9 +40,10 @@
     "pk": 1,
     "fields": {
       "text": "Bonjour",
-      "state": 3,
+      "state": 2,
       "sender": 1,
       "receiver": 1,
+      "is_visible": true,
       "timestamp": "2016-11-28T19:04:02.627Z"
     }
   },
@@ -51,9 +52,10 @@
     "pk": 2,
     "fields": {
       "text": "hello",
-      "state": 4,
+      "state": 3,
       "sender": 1,
       "receiver": 1,
+      "is_visible": true,
       "timestamp": "2016-11-28T19:04:23.777Z"
     }
   }

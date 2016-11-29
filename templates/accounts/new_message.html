@@ -7,12 +7,16 @@
         {% csrf_token %}
         {% load widget_tweaks %}
         {% trans 'Phone number of recipient' as recipient %}
-        {% render_field form.receiver class+="form-control" placeholder=recipient %}
+        {% render_field form.receiver class+="form-control new-msg" placeholder=recipient %}
         {{ form.receiver.errors }}
         {% trans 'Type a text' as type %}
-        {% render_field form.text class+="form-control" placeholder=type %}
+        {% render_field form.text class+="form-control new-msg" placeholder=type %}
         {{ form.text.errors }}
-        <input type="reset" value="{% trans 'Clean' %}">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Send' %}</button>
+        <div class="text-right new-msg">
+            <input class="btn-info btn" type="reset" value="{% trans 'Clean' %}">
+        </div>
+        <div class="text-right new-msg">
+            <button class="btn-info btn" type="submit">{% trans 'Send' %}</button>
+        </div>
     </form>
 {% endblock %}

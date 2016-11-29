@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
     {% if not confirmation == None %}
-    <p>{{ confirmation }}</p>
+        <p>{{ confirmation }}</p>
     {% endif %}
     <div class="login">
         <form action="{% url 'login' %}" method="post" class="form-signin" role="form">

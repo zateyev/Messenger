@@ -15,7 +15,7 @@
             <a class="rTableRow {% if message.state == 1 %}active-row{% endif %}"
                href="{% url 'read_message' message_id=message.id %}">
                 <div class="rTableCell">{{ message.sender }}</div>
-                <div class="rTableCell">{{ message.text }}</div>
+                <div class="rTableCell">{{ message.text|truncatechars:15 }}</div>
                 <div class="rTableCell">{{ message.timestamp }}</div>
                 <div class="rTableCell">
                     <form id="add_to_favorites" action="{% url 'add_to_favorites' %}"

@@ -1,0 +1,10 @@
+{% extends 'accounts/profile.html' %}
+{% load i18n %}
+{% block title %}<title>{% trans 'Message' %}</title>{% endblock %}
+{% block content %}
+    <h3 class="page-header">Message from {{ message.sender }}</h3>
+    <p>{{ message.text }}</p>
+    {% if not request.user.username == message.sender.username %}
+        <a href="{% url 'reply' receivers_phone=message.sender %}" class="btn-info btn">{% trans 'Reply' %}</a>
+    {% endif %}
+{% endblock %}

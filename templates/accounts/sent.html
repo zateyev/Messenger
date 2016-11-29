@@ -3,32 +3,27 @@
 {% block title %}<title>{% trans 'Sent mail' %}</title>{% endblock %}
 {% block content %}
     <h2 class="sub-header">{% trans 'Sent mail' %}</h2>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>{% trans 'Receiver' %}</th>
-                <th>{% trans 'Message' %}</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for message in messages %}
-                <tr>
-                    <td>{{ message.receiver }}</td>
-                    <td>{{ message.text }}</td>
-                    <td>{{ message.timestamp }}</td>
-                    <td>
-                        <form id="delete_from_sent" action="{% url 'delete_from_sent' %}"
-                              method="post">{% csrf_token %}
-                            <input name="message_id" type="hidden" value="{{ message.id }}"/>
-                            <button class="" type="submit">{% trans 'Delete' %}</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="rTable">
+        <div class="rTableRow">
+            <div class="rTableHead">{% trans 'Receiver' %}</div>
+            <div class="rTableHead">{% trans 'Message' %}</div>
+            <div class="rTableHead">&nbsp;</div>
+            <div class="rTableHead">&nbsp;</div>
+        </div>
+        {% for message in messages %}
+            <a class="rTableRow {% if message.state == 1 %}active-row{% endif %}"
+               href="{% url 'read_message' message_id=message.id %}">
+                <div class="rTableCell">{{ message.receiver }}</div>
+                <div class="rTableCell">{{ message.text|truncatechars:15 }}</div>
+                <div class="rTableCell">{{ message.timestamp }}</div>
+                <div class="rTableCell">
+                    <form id="delete_from_sent" action="{% url 'delete_from_sent' %}"
+                          method="post">{% csrf_token %}
+                        <input name="message_id" type="hidden" value="{{ message.id }}"/>
+                        <button class="" type="submit">{% trans 'Delete' %}</button>
+                    </form>
+                </div>
+            </a>
+        {% endfor %}
     </div>
 {% endblock %}
