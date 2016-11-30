@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-20 15:58+0000\n"
+"POT-Creation-Date: 2016-11-30 20:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,18 +32,21 @@ msgstr "Пользователь с таким номером уже сущес�
 msgid "The person with this number is not in service"
 msgstr "Пользователя с таким номером не существует"
 
+#: messages_/views.py:35
+msgid "Your account has been created"
+msgstr "Ваша учетная запись успешно создана"
+
 #: templates/accounts/favorite_messages.html:3
 #: templates/accounts/favorite_messages.html:5
 msgid "Favorite Messages"
 msgstr "Избранные сообщения"
 
-#: templates/accounts/favorite_messages.html:10
-#: templates/accounts/inbox.html:10
+#: templates/accounts/favorite_messages.html:10 templates/accounts/inbox.html:8
 msgid "Sender"
 msgstr "Отправитель"
 
-#: templates/accounts/favorite_messages.html:11
-#: templates/accounts/inbox.html:11 templates/accounts/sent.html:11
+#: templates/accounts/favorite_messages.html:11 templates/accounts/inbox.html:9
+#: templates/accounts/message.html:3 templates/accounts/sent.html:9
 msgid "Message"
 msgstr "Сообщение"
 
@@ -56,13 +59,17 @@ msgstr "Удалить из избранного"
 msgid "Inbox"
 msgstr "Входящие"
 
-#: templates/accounts/inbox.html:26
+#: templates/accounts/inbox.html:24
 msgid "Add to favorite"
 msgstr "Добавить в избранное"
 
-#: templates/accounts/inbox.html:32 templates/accounts/sent.html:26
+#: templates/accounts/inbox.html:31 templates/accounts/sent.html:23
 msgid "Delete"
 msgstr "Удалить"
+
+#: templates/accounts/message.html:8
+msgid "Reply"
+msgstr "Ответить"
 
 #: templates/accounts/new_message.html:3 templates/accounts/new_message.html:5
 msgid "New message"
@@ -76,11 +83,11 @@ msgstr "Номер получателя"
 msgid "Type a text"
 msgstr "Введите текст"
 
-#: templates/accounts/new_message.html:15
+#: templates/accounts/new_message.html:16
 msgid "Clean"
 msgstr "Очистить"
 
-#: templates/accounts/new_message.html:16
+#: templates/accounts/new_message.html:19
 msgid "Send"
 msgstr "Отправить"
 
@@ -124,7 +131,7 @@ msgstr "Фото"
 msgid "Sent mail"
 msgstr "Отправленные"
 
-#: templates/accounts/sent.html:10
+#: templates/accounts/sent.html:8
 msgid "Receiver"
 msgstr "Получатель"
 
@@ -137,7 +144,7 @@ msgstr "Главная"
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: templates/base.html:54 templates/login.html:7 templates/login.html:19
+#: templates/base.html:54 templates/login.html:7 templates/login.html:22
 #: templates/signup.html:7
 msgid "Sign in"
 msgstr "Войти"
@@ -166,15 +173,15 @@ msgstr "Подтверждение"
 msgid "Log in"
 msgstr "Войти"
 
-#: templates/login.html:13
+#: templates/login.html:16
 msgid "Please sign in"
 msgstr "Войти в систему"
 
-#: templates/login.html:14 templates/signup.html:15
+#: templates/login.html:17 templates/signup.html:15
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: templates/login.html:17 templates/signup.html:18
+#: templates/login.html:20 templates/signup.html:18
 msgid "Password"
 msgstr "Пароль"
 
