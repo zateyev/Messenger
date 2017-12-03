@@ -1,3 +1,3 @@
 # Messenger
 
-Laboratory work in software engineering
+Course work in software engineering
